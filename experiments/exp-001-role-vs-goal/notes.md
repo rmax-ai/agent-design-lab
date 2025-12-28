@@ -283,3 +283,67 @@ Evaluator pinning format specified:
 - ✅ Scoring rubrics specified
 - ✅ Evaluator versions pinnable
 - ⏳ Deterministic scorecard production (to be validated in pilot)
+
+## 2025-12-28T19:29:00.000Z - Step 5 Complete: Run Manifest & Pinning Template
+
+### Run Manifest Template
+
+Created comprehensive run manifest template (`run-manifest-template.md`) with:
+
+**Manifest Schema Components**:
+- **Pins**: Harness version (git SHA), evaluator versions + hashes, tool permission set
+- **Variant**: Specification file, hash, paradigm type
+- **Task**: Specification file, hash, seed, timeout
+- **Inputs**: Snapshot path, file list with hashes and sizes
+- **Execution**: Timestamps, duration, exit code, reason
+- **Outputs**: Path, file list with hashes
+- **Logs**: Execution log, evaluation log (both with hashes)
+- **Evaluation**: Scorecard path and hash
+- **Pairing**: Pair ID, paired run ID, reference flag
+- **Immutability**: Lock timestamp, lock status
+- **Metadata**: Version tracking, pre-registration hash, notes
+
+**Workflow Phases**:
+
+1. **Pre-Run Phase**:
+   - Initialize manifest with pins
+   - Snapshot input files
+   - Validate manifest schema
+   - Check pins, hashes, paths
+
+2. **Run Phase**:
+   - Execute agent with pinned configuration
+   - Log all operations
+   - Capture outputs
+   - Update execution metadata
+
+3. **Post-Run Phase**:
+   - Run evaluators
+   - Generate scorecard
+   - Lock manifest (immutable)
+   - Append to run log
+
+**Pre-Run Validator**:
+- Python script to validate manifest before execution
+- Checks: schema version, all pins present, no floating versions, files exist
+- Returns validation status + errors/warnings
+- Exit codes for automation
+
+**Immutability Contract**:
+- Before execution: Mutable (can update, must re-validate)
+- During execution: Read-only (only execution metadata)
+- After completion: Immutable (locked=true, timestamp set)
+- Corrections require new run with new run_id
+
+**Pairing Strategy**:
+- Pair ID links runs with identical configuration
+- Identical: task, inputs, seed, timeout, permissions
+- Execution order randomized within pairs
+- Interleaving policy to minimize temporal bias
+
+**Exit Criteria Met**:
+- ✅ Run manifest template created
+- ✅ Pinning requirements specified (harness, evaluators, tools, variant, task)
+- ✅ Pre-run validator defined (schema checks, pin validation, file verification)
+- ⏳ Schema validation to be tested in pilot
+- ⏳ Pre-run checks to be implemented in harness
