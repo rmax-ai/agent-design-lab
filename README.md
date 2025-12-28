@@ -1,41 +1,82 @@
-# SELF-GOVERNED REPOSITORY
+# Agent Design Research Monorepo
 
-## What is SELF?
+This repository is an instrumented research monorepo to empirically study agent design paradigms. Its primary objective is to compare role-centric (anthropomorphic) agent specifications against goal-centric (first-principles) agent specifications under controlled, reproducible conditions. Agents in this project are treated as goal-driven control systems — personas or human metaphors are conveniences, not foundations.
 
-SELF (Self-Evolving Living Fabric) is a sovereign control plane for agent-native systems. It defines constitutional authority, execution protocols, and amendment procedures that govern how agents may act. Rather than managing products or tasks directly, SELF governs the conditions under which work is proposed, executed, witnessed, and evolved.
+Purpose
 
-This system separates law, witnessing, and execution to ensure autonomy without loss of accountability.
+- Compare role-centric and goal-centric agent specifications across identical tasks, tools, constraints, and evaluation criteria.
+- Treat agents as first-class control structures specified by objectives, constraints, inputs, tools, state, and evaluation.
 
-## Use Cases
+Core principles
 
-- **Agentic OS Design**: Providing a sovereign foundation for operating systems where agents are first-class citizens.
-- **Autonomous Governance**: Establishing clear rules and audit trails for decentralized or automated organizations.
-- **Sovereign Data Management**: Ensuring data integrity and access control through constitutional protocols.
-- **Multi-Agent Orchestration**: Coordinating complex tasks across diverse AI assistants with shared authority and witnessing.
+- Agents are defined by objectives, constraints, inputs, tools, state, and evaluation.
+- Personas, roles, or styles MAY exist only as aliases; they MUST NOT define behavior.
+- The system MUST be auditable, reproducible, and comparable across experiments.
+- Research velocity MUST NOT compromise experimental rigor.
 
-## Architecture
+Plane separation
 
-This repository is structured into three distinct planes to maintain clear boundaries between governance, infrastructure, and work:
+- Project data plane (root): research artifacts, experiments, runs, and reports.
+- SELF control plane (.self): constitution, protocols, workflows, skills (governing law for agents).
+- SYSTEM plane (.system): neutral witnessing, recording, and ledgering of activity.
 
-- **Sovereign Law ([.self/](.self/))**: The control plane defining the constitution, protocols, and evolution of the system.
-- **Neutral Witnessing ([.system/](.system/))**: The infrastructure plane responsible for recording activity, maintaining ledgers, and providing attestations.
-- **Human Work (root)**: The data plane containing user-facing artifacts, documentation, and project outcomes.
+Repository layout (high level)
 
-This structure enables autonomous agents to operate under explicit authority with full auditability while remaining transparent to human collaborators.
+- harness/ — single canonical instrumentation layer (agents, evaluators, workflows, schemas, skills)
+- experiments/ — isolated experiment capsules (e.g., exp-001-role-vs-goal)
+- results/ — cross-experiment synthesis and aggregated outputs
+- project/ — manifest and governance documents
+- .self/ — sovereign control plane (constitution, workflows, and evolution rules)
+- .system/ — witness plane (logs, attestations)
 
-## Getting Started
+See project/manifest.md for the authoritative initialization contract and detailed rules.
 
-To interact with this repository, simply engage with an AI Assistant that supports the `AGENTS.md` standard (e.g., GitHub Copilot, Codex, OpenCode). For detailed operational instructions, refer to [AGENTS.md](AGENTS.md), and for governing principles, see [.self/constitution.md](.self/constitution.md).
+Experiment capsule contract (summary)
 
-## Development
+- Be self-contained within its folder.
+- Declare hypotheses and metrics before execution.
+- Reference (not copy) harness components.
+- Store all outputs under its runs/ directory.
+- Be reproducible via pinned manifests.
 
-This project is in a very early stage and will iterate rapidly. The primary drivers for development and research exploration are:
+Mandatory workflows (summary)
 
-- **GitHub Copilot**: Gemini 3 Flash, Raptor mini
-- **OpenAI Codex**: GPT5 Codex, GPT5 Codex mini
-- **OpenCode**: GLM-4.7, Claude Sonnet 4.5
-- **ChatGPT**: GPT 5.2 (Research Exploration)
+- bootstrap — initialize harness and experiment scaffolding
+- pin-and-run — create run manifests, snapshot inputs, execute paired variants, dispatch evaluations
+- replay — reproduce a run from its manifest
+- synthesize — aggregate results and produce reports
 
-## Contributing
+Invariants (non-negotiable, summary)
 
-Contributions are welcome. Please ensure all proposed changes adhere to the protocols defined in [.self/](.self/) and are witnessed by the [.system/](.system/) plane. Refer to the [AGENTS.md](AGENTS.md) for the execution protocol required for all modifications.
+- Pinning: runs MUST pin harness/evaluator versions and tool permission sets.
+- Immutability: completed runs are immutable; corrections require new runs.
+- Append-only logs: run summaries and violations are appended, never overwritten.
+- Scoped writes: agents may write only to the active experiment’s run directory or explicitly allowed scratch space.
+- Separation of duties: orchestrators do not execute tasks; executors do not evaluate; evaluators do not mutate project state.
+
+Getting started (brief)
+
+1. Read project/manifest.md (authoritative contract for this repository).
+2. Review harness/README.md for instrumentation and harness responsibilities.
+3. Create an experiment under experiments/ following the experiment capsule contract.
+4. Use the bootstrap and pin-and-run workflows to initialize and execute runs.
+5. Use synthesize to aggregate results and produce reports.
+
+Logging & evaluation
+
+- All runs MUST emit a structured run manifest.
+- All evaluations MUST emit a scorecard with rationale.
+- All violations MUST be recorded explicitly. Silence is considered a failure mode.
+
+Contributing
+
+Contributions are welcome. Ensure proposed changes adhere to the protocols defined in .self/ and are witnessed by the .system/ plane. Refer to AGENTS.md for the execution protocol required for modifications.
+
+Status
+
+Initial experiment: exp-001-role-vs-goal. This project is research-focused and in active development; design recommendations must be evidence-driven.
+
+References
+
+- project/manifest.md (authoritative manifest)
+- .self/constitution.md (governing constitution)
