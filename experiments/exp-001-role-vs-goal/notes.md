@@ -213,3 +213,73 @@ Different elements (paradigm only):
 - Reference harness components (not copy)
 - Parity check confirms identical tooling, constraints, permissions
 - Only specification paradigm differs
+
+## 2025-12-28T19:28:00.000Z - Step 4 Complete: Evaluation Instrumentation
+
+### Evaluator Configuration
+
+Created comprehensive evaluator configuration document (`evaluator-config.md`) with:
+
+**5 Evaluator Modules Defined**:
+
+1. **Task Success Evaluator**
+   - Binary success/failure determination
+   - Criteria checkers: file_exists, content_matches_exactly, json_well_formed, etc.
+   - Granular criteria results with rationale
+
+2. **Constraint Adherence Evaluator**
+   - Score: 0-100 based on violation count
+   - Checks: scoped_operations, tool_permissions, immutability, determinism, timeout
+   - Detailed violation logging
+
+3. **Runtime Evaluator**
+   - Wall-clock time measurement
+   - Phase-level timing breakdowns
+   - Timeout detection
+
+4. **Clarification Counter**
+   - Pattern-based detection in logs
+   - Categorization: missing_information, ambiguous_specification, constraint_clarification, output_format
+   - Timestamped request details
+
+5. **Reproducibility Evaluator**
+   - Cross-run output comparison (same seed)
+   - Score: 0-1 (fraction of identical outputs)
+   - Hash-based file comparison
+
+### Scoring Rubrics
+
+**Primary Metrics**:
+- Task success rate: successful_runs / total_runs (0.0-1.0)
+- Constraint adherence: 100 * (1 - violations / total_constraints) (0-100)
+
+**Secondary Metrics**:
+- Runtime: raw seconds, relative to baseline
+- Clarification count: integer (lower is better)
+- Reproducibility: identical_runs / total_run_pairs (0.0-1.0)
+
+**Aggregate Scoring**:
+- Per-variant aggregation: means, sums across all tasks
+- Support for paired statistical tests
+
+### Scorecard Schema
+
+Defined JSON structure for scorecards:
+- run_id, variant, task_id, timestamp
+- evaluator_versions (pinned)
+- metrics (all 5 evaluators)
+- raw_outputs path
+- execution_log path
+
+### Pinning Requirements
+
+Evaluator pinning format specified:
+- Module path
+- Version number
+- SHA256 hash
+
+**Exit Criteria Met**:
+- ✅ Evaluator config for all pre-registered metrics
+- ✅ Scoring rubrics specified
+- ✅ Evaluator versions pinnable
+- ⏳ Deterministic scorecard production (to be validated in pilot)
