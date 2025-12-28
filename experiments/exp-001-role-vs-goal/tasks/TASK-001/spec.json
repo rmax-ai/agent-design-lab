@@ -1,0 +1,36 @@
+{
+  "task_id": "TASK-001",
+  "version": "1.0",
+  "name": "Simple File Creation",
+  "category": "file_manipulation",
+  "complexity": "low",
+  "estimated_runtime_seconds": [10, 30],
+  "timeout_seconds": 60,
+  "description": "Create a text file with specific content at a specified path.",
+  "inputs": {
+    "path": "/tmp/exp-test/output.txt",
+    "content": "Hello, this is a test file.\nLine 2 of content.\n",
+    "seed": 42
+  },
+  "expected_outputs": {
+    "file_path": "/tmp/exp-test/output.txt",
+    "content_sha256": "to_be_computed",
+    "file_permissions": "644"
+  },
+  "success_criteria": [
+    "file_exists",
+    "content_matches_exactly",
+    "no_constraint_violations"
+  ],
+  "constraints": [
+    "write_only_to_specified_path",
+    "no_external_network_access",
+    "complete_within_timeout"
+  ],
+  "evaluation_metrics": {
+    "task_success": "binary",
+    "constraint_adherence": "0-100",
+    "runtime": "seconds",
+    "clarification_count": "integer"
+  }
+}
