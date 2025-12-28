@@ -347,3 +347,91 @@ Created comprehensive run manifest template (`run-manifest-template.md`) with:
 - ✅ Pre-run validator defined (schema checks, pin validation, file verification)
 - ⏳ Schema validation to be tested in pilot
 - ⏳ Pre-run checks to be implemented in harness
+
+## 2025-12-28T19:31:00.000Z - Step 6 Planning: Pilot Run Plan
+
+### Pilot Plan Created
+
+Comprehensive pilot plan document (`pilot-plan.md`) prepared:
+
+**Pilot Scope**:
+- 2 tasks selected: TASK-001 (simple), TASK-002 (medium complexity)
+- 2 paired runs = 4 total runs
+- Order randomization: Pair 1 (R, G), Pair 2 (G, R)
+
+**Pilot Workflow** (5 phases):
+
+1. **Pre-Pilot Setup**:
+   - Implement minimal harness components (workflows, evaluators, agents)
+   - Prepare test inputs (TASK-002 requires pre-populated YAML files)
+   - Setup run directory structure
+
+2. **Execute Pair 1** (TASK-001):
+   - Initialize → Validate → Execute → Evaluate → Lock
+   - Both role-centric and goal-centric variants
+   - Expected runtime: 10-30 seconds each
+
+3. **Execute Pair 2** (TASK-002):
+   - Same workflow as Pair 1
+   - Expected runtime: 30-90 seconds each
+
+4. **Pilot Validation**:
+   - Manifest validation (schema, pins, hashes)
+   - Scorecard validation (metrics, values, rationales)
+   - Pairing validation (identical inputs/seeds)
+   - Optional reproducibility check
+
+5. **Issue Tracking & Reporting**:
+   - Issue log template provided
+   - Pilot report template provided
+   - Go/no-go decision criteria
+
+**Success Criteria**:
+- Must pass: All runs complete, manifests validate, scorecards generated, pins correct, evaluators deterministic
+- Should pass: Evaluators produce reasonable results, correct tracking
+- Nice to have: High reproducibility (≥0.90), smooth workflow
+
+**Pilot Artifacts**:
+- 4 run directories with manifests, logs, outputs, scorecards
+- pilot-report.md
+- pilot-issues.md
+- pilot-validation-results.md
+
+### Implementation Blocker Identified
+
+**Critical Finding**: Harness components not implemented
+- All harness subdirectories contain only README placeholders
+- Required components:
+  - `harness/workflows/`: pin-and-run, validate-manifest, evaluate, lock-run
+  - `harness/evaluators/`: 5 evaluator modules
+  - `harness/agents/`: executor
+- Impact: Steps 6-12 cannot execute without harness implementation
+
+**Decision Point**:
+- Design phase (Steps 1-6): ✅ COMPLETE
+- Implementation phase (Steps 6-12): ⏸️ BLOCKED pending harness
+
+### Documentation Status
+
+**Complete Experiment Design Package**:
+1. ✅ research.md - Pre-registered hypotheses, metrics, analysis plan
+2. ✅ tasks/task-suite.md - 6 deterministic tasks with specs
+3. ✅ variants/role-centric.md - Anthropomorphic specification
+4. ✅ variants/goal-centric.md - First-principles specification
+5. ✅ variants/parity-check.md - Verification only paradigm differs
+6. ✅ evaluator-config.md - 5 evaluators with algorithms and rubrics
+7. ✅ run-manifest-template.md - Complete schema with pinning strategy
+8. ✅ pilot-plan.md - Detailed pilot execution plan
+9. ✅ status.md - Progress tracking
+10. ✅ notes.md - Execution notes and learnings
+11. ✅ suggestions.md - Improvement recommendations
+12. ✅ need-feedback.md - Questions requiring clarification
+
+**Exit Criteria (Step 6)**:
+- ⏳ 1-2 paired runs executed (blocked by harness)
+- ⏳ Pilot run artifacts (blocked by harness)
+- ✅ Issue log template created
+- ✅ Workflow validated (design validated, execution pending)
+- ✅ Evaluator outputs designed (implementation pending)
+
+**Recommendation**: Mark experiment as "Design Complete, Ready for Implementation Phase"
