@@ -1,16 +1,16 @@
 # Execution Status - exp-001-role-vs-goal
 
-**Last Updated**: 2025-12-28T19:27:00.000Z
+**Last Updated**: 2025-12-28T19:28:00.000Z
 
 ## Current Step
-Step 3: Implement variant specs (COMPLETED)
+Step 4: Instrument evaluation and metrics (COMPLETED)
 
 ## Completed Steps
 - [x] Step 0: Create tracking files (status.md, notes.md, suggestions.md, need-feedback.md)
 - [x] Step 1: Pre-register hypotheses & analysis plan in research.md
 - [x] Step 2: Define & freeze task suite
 - [x] Step 3: Implement variant specs (parity-first)
-- [ ] Step 4: Instrument evaluation and metrics
+- [x] Step 4: Instrument evaluation and metrics
 - [ ] Step 5: Prepare run manifest & pinning template
 - [ ] Step 6: Pilot paired runs
 - [ ] Step 7: Execute full paired runs (≥10 pairs)
@@ -21,4 +21,4 @@ Step 3: Implement variant specs (COMPLETED)
 - [ ] Step 12: Close experiment & archive outputs
 
 ## Next Actions
-- Begin Step 4: Instrument evaluation and metrics (evaluator configs, scoring rubrics)
+- Begin Step 5: Prepare run manifest & pinning template
