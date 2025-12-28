@@ -1,0 +1,58 @@
+{
+  "task_id": "TASK-005",
+  "version": "1.0",
+  "name": "Tool Composition",
+  "category": "tool_composition",
+  "complexity": "high",
+  "estimated_runtime_seconds": [60, 180],
+  "timeout_seconds": 300,
+  "description": "Chain multiple tools to accomplish a complex task: search files, extract data, transform, and output.",
+  "setup_required": {
+    "pre_populated_files": [
+      "/tmp/exp-test/data/records1.csv",
+      "/tmp/exp-test/data/records2.csv",
+      "/tmp/exp-test/data/records3.csv"
+    ],
+    "file_contents": "csv_with_status_column"
+  },
+  "inputs": {
+    "data_dir": "/tmp/exp-test/data/",
+    "search_pattern": "*.csv",
+    "filter_column": "status",
+    "filter_value": "active",
+    "output_file": "/tmp/exp-test/filtered_results.json",
+    "seed": 46
+  },
+  "expected_outputs": {
+    "output_file": "/tmp/exp-test/filtered_results.json",
+    "json_structure": {
+      "total_rows_scanned": "computed",
+      "filtered_rows": "computed",
+      "source_files": ["records1.csv", "records2.csv", "records3.csv"],
+      "filter_criteria": {"status": "active"},
+      "results": "array_of_filtered_records"
+    }
+  },
+  "success_criteria": [
+    "all_csv_files_found_and_processed",
+    "filtering_accurate",
+    "json_well_formed",
+    "results_count_matches_expectation",
+    "tool_invocation_sequence_efficient"
+  ],
+  "constraints": [
+    "search_only_in_data_dir",
+    "process_all_matching_files",
+    "filter_correctly",
+    "output_valid_json",
+    "complete_within_timeout"
+  ],
+  "evaluation_metrics": {
+    "task_success": "binary",
+    "constraint_adherence": "0-100",
+    "runtime": "seconds",
+    "clarification_count": "integer",
+    "tool_invocation_count": "integer",
+    "filtering_accuracy": "percentage"
+  }
+}

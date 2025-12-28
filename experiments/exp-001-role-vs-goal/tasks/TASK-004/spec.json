@@ -1,0 +1,41 @@
+{
+  "task_id": "TASK-004",
+  "version": "1.0",
+  "name": "Error Recovery",
+  "category": "error_handling",
+  "complexity": "medium",
+  "estimated_runtime_seconds": [45, 120],
+  "timeout_seconds": 150,
+  "description": "Attempt operation that will fail, detect failure, and retry with correction.",
+  "inputs": {
+    "target_file": "/tmp/exp-test/nonexistent/data.txt",
+    "content": "Data to write",
+    "fallback_path": "/tmp/exp-test/data.txt",
+    "seed": 45
+  },
+  "expected_outputs": {
+    "file_created": true,
+    "error_logged": true,
+    "recovery_action_taken": true,
+    "final_path": "either_target_or_fallback"
+  },
+  "success_criteria": [
+    "file_created_successfully",
+    "error_logged_explicitly",
+    "recovery_action_taken",
+    "task_completion_within_timeout"
+  ],
+  "constraints": [
+    "handle_directory_not_found_error",
+    "log_error_explicitly",
+    "attempt_recovery",
+    "complete_within_timeout"
+  ],
+  "evaluation_metrics": {
+    "task_success": "binary",
+    "constraint_adherence": "0-100",
+    "runtime": "seconds",
+    "clarification_count": "integer",
+    "error_recovery_attempts": "integer"
+  }
+}
