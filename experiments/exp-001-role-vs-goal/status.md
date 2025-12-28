@@ -1,13 +1,13 @@
 # Execution Status - exp-001-role-vs-goal
 
-**Last Updated**: 2025-12-28T19:21:42.354Z
+**Last Updated**: 2025-12-28T19:23:00.000Z
 
 ## Current Step
-Setting up tracking infrastructure
+Step 1: Pre-register hypotheses & analysis plan (COMPLETED)
 
 ## Completed Steps
-- [ ] Step 0: Create tracking files (status.md, notes.md, suggestions.md, need-feedback.md)
-- [ ] Step 1: Pre-register hypotheses & analysis plan in research.md
+- [x] Step 0: Create tracking files (status.md, notes.md, suggestions.md, need-feedback.md)
+- [x] Step 1: Pre-register hypotheses & analysis plan in research.md
 - [ ] Step 2: Define & freeze task suite
 - [ ] Step 3: Implement variant specs (parity-first)
 - [ ] Step 4: Instrument evaluation and metrics
@@ -21,5 +21,4 @@ Setting up tracking infrastructure
 - [ ] Step 12: Close experiment & archive outputs
 
 ## Next Actions
-- Create notes.md, suggestions.md, and need-feedback.md
-- Begin Step 1: Pre-register hypotheses & analysis plan
+- Begin Step 2: Define & freeze task suite with deterministic specs

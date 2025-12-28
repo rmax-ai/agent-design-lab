@@ -41,3 +41,68 @@
 - notes.md: Detailed observations and learnings
 - suggestions.md: Improvements for future tasks
 - need-feedback.md: Questions requiring clarification
+
+## 2025-12-28T19:22:00.000Z - Harness Infrastructure Discovery
+
+### Harness Components (Minimal/Placeholder)
+All harness subdirectories exist but contain only README files:
+- `harness/agents/` - Agent specifications and implementations
+- `harness/evaluators/` - Scoring and assessment modules
+- `harness/workflows/` - Orchestration workflows (bootstrap, pin-and-run, replay, synthesize)
+- `harness/schemas/` - JSON schemas for manifests and scorecards
+- `harness/skills/` - Skills library
+
+**Observation**: The harness appears to be scaffolded but not implemented yet. This is consistent with a bootstrapping phase of the project.
+
+### Experiment Directories (Ready for Content)
+All experiment subdirectories exist with README placeholders:
+- `tasks/` - Ready for task suite definitions
+- `variants/` - Ready for role-centric and goal-centric specs
+- `runs/` - Ready for pinned run artifacts
+- `report/` - Ready for comparative reports
+
+**Next Action**: Begin Step 1 by expanding research.md with pre-registered hypotheses, metrics, and analysis plan.
+
+## 2025-12-28T19:23:00.000Z - Step 1 Complete: Pre-Registration
+
+### Pre-Registration Details
+Completed comprehensive pre-registration in research.md including:
+
+**Hypotheses (5 total)**:
+- H1 (Primary): Goal-centric → higher task success rates
+- H2: Goal-centric → better constraint adherence  
+- H3: Goal-centric → higher reproducibility
+- H4: Role-centric → more clarification requests
+- H5: No significant runtime difference
+
+**Metrics (9 total)**:
+- Primary: Task success rate, constraint adherence score
+- Secondary: Clarification count, runtime, reproducibility score, specification clarity
+- Tertiary: Log volume, tool patterns, error recovery
+
+**Statistical Plan**:
+- Paired t-tests (alpha=0.05, two-tailed)
+- Minimum 10 paired runs per task, target 15
+- Effect size: Cohen's d
+- Bonferroni correction for multiple comparisons
+- Power ≥0.80 required
+
+**Quality Assurance**:
+- Pre-run validation (manifest schema, pins, determinism)
+- Post-run validation (scorecard completeness, log integrity)
+- Violation handling policy defined
+- Immutability and append-only logging enforced
+
+**Key Design Decisions**:
+- Pairing policy: Identical seeds/inputs, interleaved runs
+- Success threshold: 15% minimum detectable difference
+- Reproducibility target: ≥0.90 for 80% of runs
+- Timeout: 600 seconds per task
+
+### Pre-Registration Lock
+✅ Research.md locked as of 2025-12-28T19:23:00.000Z
+- Any future modifications must be marked as post-hoc
+- Pre-registered analyses take precedence in reporting
+- Lock enforced before any pinned runs
+
+**Exit Criteria Met**: Pre-registration exists and will be committed before any pinned run.
