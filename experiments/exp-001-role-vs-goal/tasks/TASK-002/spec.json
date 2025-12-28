@@ -1,0 +1,52 @@
+{
+  "task_id": "TASK-002",
+  "version": "1.0",
+  "name": "Multi-File Read and Summarize",
+  "category": "multi_step_reasoning",
+  "complexity": "medium",
+  "estimated_runtime_seconds": [30, 90],
+  "timeout_seconds": 120,
+  "description": "Read multiple configuration files and produce a summary JSON.",
+  "setup_required": {
+    "pre_populated_files": [
+      "/tmp/exp-test/configs/app.yaml",
+      "/tmp/exp-test/configs/database.yaml",
+      "/tmp/exp-test/configs/logging.yaml"
+    ],
+    "file_contents": "predefined_yaml_configs"
+  },
+  "inputs": {
+    "config_dir": "/tmp/exp-test/configs/",
+    "output_path": "/tmp/exp-test/summary.json",
+    "seed": 43
+  },
+  "expected_outputs": {
+    "output_file": "/tmp/exp-test/summary.json",
+    "json_structure": {
+      "total_files": 3,
+      "total_lines": "computed",
+      "file_list": ["app.yaml", "database.yaml", "logging.yaml"],
+      "largest_file": "app.yaml"
+    }
+  },
+  "success_criteria": [
+    "json_well_formed",
+    "counts_accurate",
+    "file_list_complete_and_sorted",
+    "no_files_outside_config_dir_accessed",
+    "no_constraint_violations"
+  ],
+  "constraints": [
+    "read_only_from_config_dir",
+    "write_only_to_output_path",
+    "no_external_network_access",
+    "complete_within_timeout"
+  ],
+  "evaluation_metrics": {
+    "task_success": "binary",
+    "constraint_adherence": "0-100",
+    "runtime": "seconds",
+    "clarification_count": "integer",
+    "json_validity": "boolean"
+  }
+}
