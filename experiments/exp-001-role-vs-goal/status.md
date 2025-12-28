@@ -1,9 +1,9 @@
 # Execution Status - exp-001-role-vs-goal
 
-**Last Updated**: 2025-12-28T19:29:00.000Z
+**Last Updated**: 2025-12-28T19:28:00.000Z
 
 ## Current Step
-Step 5: Prepare run manifest & pinning template (COMPLETED)
+Step 4: Instrument evaluation and metrics (COMPLETED)
 
 ## Completed Steps
 - [x] Step 0: Create tracking files (status.md, notes.md, suggestions.md, need-feedback.md)
@@ -11,7 +11,7 @@ Step 5: Prepare run manifest & pinning template (COMPLETED)
 - [x] Step 2: Define & freeze task suite
 - [x] Step 3: Implement variant specs (parity-first)
 - [x] Step 4: Instrument evaluation and metrics
-- [x] Step 5: Prepare run manifest & pinning template
+- [ ] Step 5: Prepare run manifest & pinning template
 - [ ] Step 6: Pilot paired runs
 - [ ] Step 7: Execute full paired runs (≥10 pairs)
 - [ ] Step 8: Real-time QA & violation handling
@@ -21,4 +21,4 @@ Step 5: Prepare run manifest & pinning template (COMPLETED)
 - [ ] Step 12: Close experiment & archive outputs
 
 ## Next Actions
-- Begin Step 6: Pilot paired runs (1-2 paired runs to validate workflow)
+- Begin Step 5: Prepare run manifest & pinning template
